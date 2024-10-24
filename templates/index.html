@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moniteur de température maison</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bulma.min.css') }}">
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</head>
+
+<body>
+    <div id="test"></div>
+    {% if name %}
+    <h1>Hello {{ name }}!</h1>
+    {% else %}
+    <h1>Hello, World!</h1>
+    {% endif %}
+
+    <div id="dynamic-section"></div>
+    <button class='button' type='anchor' onclick="updateContent()">Mettre à jour</button>
+
+
+    <div>
+        <div class="card">
+            <div class="card-content">
+                <p class="title">
+                    “There are two hard things in computer science: cache invalidation, naming
+                    things, and off-by-one errors.”
+                </p>
+                <p class="subtitle">Jeff Atwood</p>
+            </div>
+            <footer class="card-footer">
+                <p class="card-footer-item">
+                    <span>
+                        View on
+                        <a href="https://twitter.com/codinghorror/status/506010907021828096">Twitter</a>
+                    </span>
+                </p>
+                <p class="card-footer-item">
+                    <span> Share on <a href="#">Facebook</a> </span>
+                </p>
+            </footer>
+        </div>
+    </div>
+
+    <button class="js-modal-trigger" data-target="modal-js-example">
+        Open JS example modal
+    </button>
+
+    <div id="modal-js-example" class="modal">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+            <div class="box">
+                <p>Modal JS example</p>
+                <!-- Your content -->
+            </div>
+        </div>
+
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+
+</body>
+<script>
+
+
+</script>
+
+</html>
