@@ -18,9 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
         const modal = $trigger.dataset.target;
         const $target = document.getElementById(modal);
-
         $trigger.addEventListener('click', () => {
-            console.log($target)
             openModal($target);
         });
     });
@@ -50,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Get the target from the "data-target" attribute
             const target = el.dataset.target;
-            console.log(target)
             const $target = document.getElementById(target);
 
             // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
@@ -59,6 +56,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
         });
     });
+
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const themeIcon = document.getElementById('toggleTheme')
+    const darkIconPath = themeIcon.getAttribute("data-dark-icon");
+    const lightIconPath = themeIcon.getAttribute("data-light-icon");
+
+    if (savedTheme === "dark" || (!savedTheme && prefersDarkScheme)) {
+        toggleThemeIcon('theme-dark')
+    } else {
+        toggleThemeIcon('theme-light')
+    }
+
+    function toggleThemeIcon(theme) {
+        themeIcon.src = theme === "theme-light" ? darkIconPath : lightIconPath;
+    }
+
+    function toggleTheme() {
+        const $html = document.getElementsByTagName('html')[0]
+        const theme = $html.className === 'theme-dark' ? 'theme-light' : 'theme-dark'
+        $html.className = theme
+        toggleThemeIcon(theme)
+    }
+
+    document.getElementById('toggleTheme').addEventListener('click', toggleTheme)
+
 });
 
 async function updateContent() {

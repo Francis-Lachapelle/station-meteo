@@ -25,22 +25,15 @@
                 Home
             </a>
 
-            <a class="navbar-item">
-                Documentation
-            </a>
+
         </div>
 
         <div class="navbar-end">
-            <div class="navbar-item">
-                <div class="buttons">
-                    <a class="button is-primary">
-                        <strong>Sign up</strong>
-                    </a>
-                    <a class="button is-light">
-                        Log in
-                    </a>
-                </div>
-            </div>
+            <a class="navbar-item">
+                <img id="toggleTheme" src="{{ url_for('static', filename='assets/lightMode.svg') }}" alt="Theme Icon"
+                    data-light-icon="{{ url_for('static', filename='assets/lightMode.svg') }}"
+                    data-dark-icon="{{ url_for('static', filename='assets/darkMode.svg') }}">
+            </a>
         </div>
     </div>
 </nav>

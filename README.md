@@ -1,0 +1,1 @@
+A personal project to play around with temperature sensors, a Web UI using a CSS only framework, python (flask) server and sqlite3 database. 
