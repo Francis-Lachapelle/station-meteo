@@ -6,10 +6,8 @@ app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 @app.route("/")
-def welcome(name='Francis'):
-    flash('You were successfully logged in')
-    data = ('Hallo', 'This', 'Welt')
-    return render_template('index.html', name=name, data=data)
+def welcome():
+    return render_template('index.html')
 
 #@app.route("/<string:device>")
 #def show_device(device):
@@ -20,6 +18,7 @@ def show_device():
     random_number = random.randint(0, 50)
     return str(random_number)
 
-
+if __name__ == '__main__':
+    app.run(debug=True)
 
 #https://flask.palletsprojects.com/en/3.0.x/patterns/javascript/
