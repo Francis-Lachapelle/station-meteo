@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="section">
+
+    <div class="grid is-col-min-10">
+        {% for item in menu_items %}
+        <div class="card">
+            <header class="card-header-icon" aria-label="more options">
+                <p class="card-header-title">{{ item.label }}</p>
+                <img class="icon" id="thermometerIcon"
+                    src="{{ url_for('static', filename='assets/thermometerLightMode.svg') }}" alt="Theme Icon"
+                    width="40px" data-light-icon="{{ url_for('static', filename='assets/thermometerLightMode.svg') }}"
+                    data-dark-icon="{{ url_for('static', filename='assets/thermometerDarkMode.svg') }}">
+                <button class="button option-button" data-id="{{ item.sensorId }}">Options</button>
+            </header>
+            <div class="card-content">
+
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+
+</section>
+
+<section>
+    <div id="sensor-modal" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="box">
+                <p id="sensor-modal-title">Sensor Data</p>
+                <div id="sensor-modal-data">
+                    <!-- Dynamically generated data will go here -->
+                </div>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+</section>
+{% endblock %}

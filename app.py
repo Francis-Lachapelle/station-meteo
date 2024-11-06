@@ -7,7 +7,16 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 @app.route("/")
 def welcome():
-    return render_template('index.html')
+    menu_items = []
+   
+    menu_items = [
+       {"sensorId":'124124125152', "label": "Capteur 1", "itemType":'sensor', "data":{"temp":23, "humidity":45, "pressure":102, "air_quality":67}},
+       {"sensorId":'124124125152', "label": "Capteur 2", "itemType":'sensor',"data":{"temp":26, "humidity":65}},
+       {"sensorId":'1241121424125152', "label": "Capteur 3", "itemType":'sensor', "data":{"temp":34, "humidity":66, "pressure":102}},
+
+    ]
+
+    return render_template('startMenu.html', menu_items=menu_items)
 
 #@app.route("/<string:device>")
 #def show_device(device):

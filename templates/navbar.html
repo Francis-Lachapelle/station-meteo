@@ -1,4 +1,4 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="https://bulma.io">
             <svg width="640" height="160" viewBox="0 0 640 160" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,8 +30,8 @@
 
         <div class="navbar-end">
             <a class="navbar-item">
-                <img id="toggleTheme" src="{{ url_for('static', filename='assets/lightMode.svg') }}" alt="Theme Icon"
-                    data-light-icon="{{ url_for('static', filename='assets/lightMode.svg') }}"
+                <img class="icon" id="toggleTheme" src="{{ url_for('static', filename='assets/lightMode.svg') }}"
+                    alt="Theme Icon" data-light-icon="{{ url_for('static', filename='assets/lightMode.svg') }}"
                     data-dark-icon="{{ url_for('static', filename='assets/darkMode.svg') }}">
             </a>
         </div>

@@ -59,29 +59,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const savedTheme = localStorage.getItem("theme");
     const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const themeIcon = document.getElementById('toggleTheme')
-    const darkIconPath = themeIcon.getAttribute("data-dark-icon");
-    const lightIconPath = themeIcon.getAttribute("data-light-icon");
+
 
     if (savedTheme === "dark" || (!savedTheme && prefersDarkScheme)) {
-        toggleThemeIcon('theme-dark')
+        toggleThemeIcons('theme-dark')
     } else {
-        toggleThemeIcon('theme-light')
+        toggleThemeIcons('theme-light')
     }
 
-    function toggleThemeIcon(theme) {
-        themeIcon.src = theme === "theme-light" ? darkIconPath : lightIconPath;
+    function toggleThemeIcons(theme) {
+
+        const icons = document.getElementsByClassName('icon')
+        for (const icon of icons) {
+            const darkIconPath = icon.getAttribute("data-dark-icon");
+            const lightIconPath = icon.getAttribute("data-light-icon");
+            icon.src = theme === 'theme-light' ? darkIconPath : lightIconPath
+        }
     }
 
     function toggleTheme() {
         const $html = document.getElementsByTagName('html')[0]
         const theme = $html.className === 'theme-dark' ? 'theme-light' : 'theme-dark'
         $html.className = theme
-        toggleThemeIcon(theme)
+        toggleThemeIcons(theme)
     }
 
     document.getElementById('toggleTheme').addEventListener('click', toggleTheme)
 
+    const sensorModal = document.getElementById('sensor-modal');
+    const sensorModalTitle = document.getElementById('sensor-modal-title');
+    const sensorModalData = document.getElementById('sensor-modal-data');
+
+    document.querySelectorAll('.option-button').forEach(button => {
+        button.addEventListener('click', async (event) => {
+            const sensorId = event.target.getAttribute('data-id');
+            const itemData = await (await fetch('/update-section')).text()
+
+            if (itemData) {
+                // Update modal content with the selected data
+                sensorModalTitle.textContent = `${sensorId}`;
+                sensorModalData.innerHTML = `
+                    ${itemData}
+                `;
+
+                // Show the modal
+                sensorModal.classList.add('is-active');
+            }
+        });
+    });
 });
 
 async function updateContent() {
